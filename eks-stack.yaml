@@ -67,8 +67,8 @@ Resources:
       Version: !Ref KubernetesVersion
       RoleArn: !GetAtt EksRole.Arn
       ResourcesVpcConfig:
-        SecurityGroupIds:
-          - !ImportValue ControlPlaneSecurityGroupId
+        # SecurityGroupIds:
+        #   - !ImportValue ControlPlaneSecurityGroupId
         SubnetIds: !Split [ ',', !ImportValue PrivateSubnetIds ]
 
   EksNodegroup:
