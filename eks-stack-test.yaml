@@ -364,7 +364,7 @@ Resources:
   #============================================================================#
 
   WorkerNodesAutoScalingGroup:
-    Type:   
+    Type: AWS::EKS::NodeAutoScalingGroup
     UpdatePolicy:
       AutoScalingRollingUpdate:
         MinInstancesInService: 1
