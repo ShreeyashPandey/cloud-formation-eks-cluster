@@ -93,17 +93,17 @@ Resources:
         Value: Private02
 
   PublicRoute:
-    DependsOn: VPCGatewayAttachment
-    Type: AWS::EC2::Route
+    # DependsOn: VPCGatewayAttachment
+    # Type: AWS::EC2::Route
     Properties:
       RouteTableId: !Ref PublicRouteTable
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
 
   PrivateRoute01:
-    DependsOn:
-    - VPCGatewayAttachment
-    - NatGateway01
+    # DependsOn:
+    # - VPCGatewayAttachment
+    # - NatGateway01
     Type: AWS::EC2::Route
     Properties:
       RouteTableId: !Ref PrivateRouteTable01
@@ -111,9 +111,9 @@ Resources:
       NatGatewayId: !Ref NatGateway01
 
   PrivateRoute02:
-    DependsOn:
-    - VPCGatewayAttachment
-    - NatGateway02
+    # DependsOn:
+    # - VPCGatewayAttachment
+    # - NatGateway02
     Type: AWS::EC2::Route
     Properties:
       RouteTableId: !Ref PrivateRouteTable02
@@ -121,10 +121,10 @@ Resources:
       NatGatewayId: !Ref NatGateway02
 
   NatGateway01:
-    DependsOn:
-    - NatGatewayEIP1
-    - PublicSubnet01
-    - VPCGatewayAttachment
+    # DependsOn:
+    # - NatGatewayEIP1
+    # - PublicSubnet01
+    # - VPCGatewayAttachment
     Type: AWS::EC2::NatGateway
     Properties:
       AllocationId: !GetAtt 'NatGatewayEIP1.AllocationId'
@@ -134,10 +134,10 @@ Resources:
         Value: !Sub '${AWS::StackName}-NatGatewayAZ1'
 
   NatGateway02:
-    DependsOn:
-    - NatGatewayEIP2
-    - PublicSubnet02
-    - VPCGatewayAttachment
+    # DependsOn:
+    # - NatGatewayEIP2
+    # - PublicSubnet02
+    # - VPCGatewayAttachment
     Type: AWS::EC2::NatGateway
     Properties:
       AllocationId: !GetAtt 'NatGatewayEIP2.AllocationId'
@@ -147,15 +147,15 @@ Resources:
         Value: !Sub '${AWS::StackName}-NatGatewayAZ2'
 
   NatGatewayEIP1:
-    DependsOn:
-    - VPCGatewayAttachment
+    # DependsOn:
+    # - VPCGatewayAttachment
     Type: 'AWS::EC2::EIP'
     Properties:
       Domain: vpc
 
   NatGatewayEIP2:
-    DependsOn:
-    - VPCGatewayAttachment
+    # DependsOn:
+    # - VPCGatewayAttachment
     Type: 'AWS::EC2::EIP'
     Properties:
       Domain: vpc
