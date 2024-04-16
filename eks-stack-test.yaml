@@ -85,22 +85,22 @@ Resources:
           Value: 1
         - Key: !Sub "kubernetes.io/cluster/${AWS::StackName}"
           Value: shared
- PrivateSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: !FindInMap [ VpcIpRanges, Option1, PrivateSubnet1 ]
-      # AvailabilityZone: !Select
-      #   - 1
-      #   - !GetAZs ""
-      AvailabilityZone: !Select [ 0, !GetAZs '' ]
-      Tags:
-        - Key: Name
-          Value: !Sub "${AWS::StackName}-PrivateSubnet1"
-        - Key: kubernetes.io/role/internal-elb
-          Value: 1
-        - Key: !Sub "kubernetes.io/cluster/${AWS::StackName}"
-          Value: shared
+  PrivateSubnet1:
+      Type: AWS::EC2::Subnet
+      Properties:
+        VpcId: !Ref VPC
+        CidrBlock: !FindInMap [ VpcIpRanges, Option1, PrivateSubnet1 ]
+        # AvailabilityZone: !Select
+        #   - 1
+        #   - !GetAZs ""
+        AvailabilityZone: !Select [ 0, !GetAZs '' ]
+        Tags:
+          - Key: Name
+            Value: !Sub "${AWS::StackName}-PrivateSubnet1"
+          - Key: kubernetes.io/role/internal-elb
+            Value: 1
+          - Key: !Sub "kubernetes.io/cluster/${AWS::StackName}"
+            Value: shared
   PrivateSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
