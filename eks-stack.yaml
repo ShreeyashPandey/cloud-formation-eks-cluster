@@ -69,7 +69,7 @@ Resources:
       ResourcesVpcConfig:
         # SecurityGroupIds:
         #   - !ImportValue ControlPlaneSecurityGroupId
-        SubnetIds: !Split [ ',', !ImportValue PrivateSubnetIds ]
+        # SubnetIds: !Split [ ',', !ImportValue PrivateSubnetIds ]
 
   EksNodegroup:
     Type: AWS::EKS::Nodegroup
