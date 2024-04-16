@@ -5,7 +5,7 @@ Description: 'Amazon EKS Cluster'
 Parameters:
   ClusterName:
     Type: String
-    Default: my-eks-cluster
+    Default: Sandbox-cluster
   NumberOfWorkerNodes:
     Type: Number
     Default: 1
@@ -14,7 +14,7 @@ Parameters:
     Default: t2.micro
   KubernetesVersion:
     Type: String
-    Default: 1.22
+    Default: 1.29
     
 Resources:
 
