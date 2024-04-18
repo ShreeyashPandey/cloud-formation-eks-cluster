@@ -5,7 +5,7 @@ Description: 'Amazon EKS Cluster'
 Parameters:
   ClusterName:
     Type: String
-    Default: Sandbox-cluster
+    Default: my-eks-cluster
   NumberOfWorkerNodes:
     Type: Number
     Default: 1
@@ -14,7 +14,7 @@ Parameters:
     Default: t2.micro
   KubernetesVersion:
     Type: String
-    Default: 1.29
+    Default: 1.22
     
 Resources:
 
@@ -67,9 +67,9 @@ Resources:
       Version: !Ref KubernetesVersion
       RoleArn: !GetAtt EksRole.Arn
       ResourcesVpcConfig:
-        # SecurityGroupIds:
-        #   - !ImportValue ControlPlaneSecurityGroupId
-        # SubnetIds: !Split [ ',', !ImportValue PrivateSubnetIds ]
+        SecurityGroupIds:
+          - !ImportValue ControlPlaneSecurityGroupId
+        SubnetIds: !Split [ ',', !ImportValue PrivateSubnetIds ]
 
   EksNodegroup:
     Type: AWS::EKS::Nodegroup
